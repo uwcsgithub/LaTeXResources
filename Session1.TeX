@@ -27,8 +27,8 @@ You write your document in \texttt{plain text} with commands that describe its s
 The point of such a markup language is to separate content from visual design. If you work in a WYSIWYG editor like MS Word, you may be tempted to waste time fiddling about with making everything look good; \LaTeX gives you the opportunity to write all your content undistracted.
 
 \section*{Getting Started}
-A minimal \LaTeX document requires a document class, as well as begginning and
-end tags (delimiters?)
+A minimal \LaTeX document requires a document class, as well as beginning and
+end tags.
 
 \begin{verbatim}
     \documentclass{article}
@@ -65,7 +65,7 @@ In Overleaf, the errors panel is accessed by clicking the page button next to ``
 If you encounter an error, don't panic! Look at the \LaTeX you have written and try to figure out where it went wrong. If you have multiple errors, start with the first one - it's possible this is leading to all of the others. 
 
 \subsection*{Typesetting Maths}
-As you saw earlier, dollar signs are special characters in \LaTeX. This is because they're used to mark mathematics in text (inline notation).
+As you saw earlier, dollar signs are special characters in \LaTeX. This is because they're used to mark mathematics in text (inline notation). Special characters can be escaped with a backslash; so, to insert a dollar sign, you can write \verb|\$|.
 
 For example, ``Let $a$ and $b$ be distinct positive integers, and let $c = a - b + 1$'' can be written as ``\texttt{Let \$a\$ and \$b\$ be distinct positive intergers, and let \$c = a - b + 1\$}'' Dollar signs are always used in pairs - once to begin and once to end the inline equation. Spacing is also automatically handled in maths environments; any spaces you use will be ignored.
 
@@ -93,7 +93,19 @@ For example, ``Let $a$ and $b$ be distinct positive integers, and let $c = a - b
         \item \verb|$\Omega = \sum_{k = 1}^{n} \omega_k$|
         \item compiles to $\Omega = \sum_{k = 1}^{n} \omega_k$
     \end{itemize}
+    \item Roots can be written with \verb|\sqrt{}|;
+    \begin{itemize}
+        \item \verb|$\sqrt{x+1}$|
+        \item compiles to $\sqrt{x+1}$
+    \end{itemize}
+    The base of the root can be specified with an optional argument in square brackets.
+    \begin{itemize}
+        \item \verb|$\sqrt[2n]{x+1}$|
+        \item compiles to $\sqrt[2n]{x+1}$
+    \end{itemize}
 \end{itemize}
+Generally, commands that take mandatory arguments do so in curly brackets, while optional arguments are given in square brackets;
+
 
 For larger, more complicated equations, we can display these on their own line
 with \textit{displaystyle} delimiters. For these, you can use either
