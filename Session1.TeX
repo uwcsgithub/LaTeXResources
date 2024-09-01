@@ -1,0 +1,202 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{fancyvrb}
+\usepackage{float}
+
+\usepackage[margin = 0.7in]{geometry}
+\hyphenpenalty = 10000
+
+
+\title{Beginner's Guide to LaTeX}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\clearpage
+
+\section*{Why LaTeX?}
+LaTeX makes beautiful documents, especially for mathematics. It is far more
+powerful than your standard text editor, and can be extended even further with
+packages for everything you can think of. 
+
+But how does it work? \\
+You write your document in \texttt{plain text} with commands that describe its
+strucutre and meaning. Th \LaTeX proogram then processes your text and commands
+to produce a formatted document... a lot like HTML and CSS! 
+
+\section*{Getting Started}
+A minimal \LaTeX document requires a document class, as well as begginning and
+end tags (delimiters?)
+
+\begin{verbatim}
+    \documentclass{article}
+    \begin{document}
+        Your first document!
+        % The rest of your content goes here
+    \end{document}
+\end{verbatim}
+
+All commands start with a backslash ($\backslash$). \\
+Every document starts with a \verb+\documentclass+ command. \\
+The argument in curly braces (\{ \}) tells \LaTeX what kind of document we are
+creating. In this case, it is an \texttt{article}.\\
+A percent sign (\%) starts a \textit{comment} - \LaTeX ignores all characters
+after a \% on a given line. 
+
+\subsection*{Getting Started with Overleaf}
+Overleaf is a website for creating \LaTeX documents. It will "compile" your
+\LaTeX and automatically show you the results. 
+
+% TO DO: CREATE EXAMPLE DOC
+Click \href{google.com}{here} to open the example document in Overleaf.
+
+\textbf{EX 1 and EX2 here? See source file for details}
+% EX 1: Add plain, unstyled text between \begin{document} and \end{document} and
+% compile. Maybe play with whitespace and see how it's trimmed? 
+
+% EX 2: Special characters in text, escape character, quatation marks (`' and ``
+% ''), etc. We could possibly provide a block of text here and a solution so
+% that we can guarantee all the necessary things are covered? 
+
+\subsection*{Handling Errors}
+\LaTeX can run into issues when compiling your document, just like any
+programming language. When this happens, it stops and throws an error, and will
+not produce any output until this error is fixed. \\
+For example, if you misspell a command, say \verb+\textbf+ as \verb+\txetbf+,
+\LaTeX will stop with an ``Undefined control sequence'' error, as ``txetbf'' is
+not a command it knows.
+
+In Overleaf, the errors panel is accessed by clicking the page button next to
+``Recompile''. If you have errors, there will be a red icon on this button, and
+the errors will be listed. 
+
+If you encounter an error, don't panic! Look at the \LaTeX you have written and
+try to figure out where it went wrong. If you have multiple errors, start with
+the first one - it's possible this is leading to all of the others. 
+
+\subsection*{Typesetting Maths}
+As you saw earlier, dollar signs are special characters in \LaTeX. This is
+because they're used to mark mathematics in text (inline notation).
+
+For example, ``Let $a$ and $b$ be distinct positive integers, and let $c = a - b
++ 1$'' can be written as ``\texttt{Let \$a\$ and \$b\$ be distinct positive
+intergers, and let \$c = a - b + 1\$}'' Dollar signs are always used in pairs -
+once to begin and once to end the inline equation. Spacing is also automatically
+handled; any spaces you use will be ignored. 
+
+\textbf{Here's some of the basic notation in maths:}
+\begin{itemize}
+    \item Use a caret (\verb+^+) for superscripts and an underscore (\verb+_+)
+    for subscripts
+    \begin{itemize}
+        \item \verb|$y = c _ 2 x^2 + c_1 x + c_0$|
+        \item Which compiles to $y = c _ 2 x^2 + c_1 x + c_0$
+    \end{itemize}
+    \item Use curly braces (\{ \}) to group superscripts and subscripts. 
+    \begin{itemize}
+        \item \verb|$F_n = F_{n - 1} + F_{n - 2}$|
+        \item Which compiles to $F_n = F_{n - 1} + F_{n - 2}$
+    \end{itemize}
+    \item There are commands for Greek letters, beginning with a backslash
+    followed by the name of the character
+    \begin{itemize}
+        \item \verb|$\Omega = \sum_{k = 1}^{n} \omega_k$|
+        \item Which compiles to $\Omega = \sum_{k = 1}^{n} \omega_k$
+    \end{itemize}
+\end{itemize}
+
+For larger, more complicated equations, we can display these on their own line
+with \textit{display} delimiters. For these, you can use either
+\texttt{$\backslash$[ ... $\backslash$]}  or \verb+\begin{equation} ...\end{equation}+
+
+For example,
+\begin{figure}[H]
+    \centering
+    \begin{BVerbatim}
+        \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \] 
+    \end{BVerbatim}
+\end{figure}
+
+
+
+Will display as
+\[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \] 
+
+\textbf{EX 3 here?}
+% EX 3: maybe some maths problems/simple proofs to typeset their answers to. 
+
+\subsection*{Environments}
+\texttt{equation} is an environment - it gives a command context for the output it should be producing. 
+Inline equations can be denoted by \verb+\begin{math} ...\end{math}+, and display differently to \verb+\begin{equation} ...\end{equation}+. For example, the summarion sign $\sum$ will be larger in a display equation than an inline one.
+The \verb+\begin+ and \verb+\end+ commands are used to create many different environments. For example, the \texttt{itemize} and \texttt{enumerate} environments create bulleted and numbered lists respectively. 
+
+\begin{figure}[H]
+    \centering
+    \begin{BVerbatim}
+        \begin{itemize}
+            \item Item 1 
+            \item Item 2
+        \end{itemize}
+    \end{BVerbatim}
+\end{figure}
+
+\begin{itemize}
+    \item Item 1 
+    \item Item 2
+\end{itemize}
+
+\subsection*{Packages}
+So far, everything we have used has been built into \LaTeX. However, \LaTeX has libraries, called \textit{packages}, of extra commands and environments.\\
+We have to load each of the packages we want to use with a \verb|\usepackage| command in the preamble (before the \verb|begin{document}| command). 
+
+\subsubsection*{amsmath}
+The American Mathematical Society has a package called \texttt{amsmath}, imported with \verb|\usepackage{amsmath}| command in the preamble. This package provides many useful features, and the documentation for it is \href{https://www.ams.org/arc/tex/amsmath/amsldoc.pdf}{here}. 
+Some examples of uses of \texttt{amsmath} are below: 
+
+\begin{itemize}
+    \item 
+    \begin{verbatim}
+        \begin{equation*}
+            \Omega = \sum_{k - 1}^{n} \omega_k
+        \end{equation*}
+    \end{verbatim}
+    \begin{itemize}
+        \item Using \texttt{equation*} will produce unnumbered equations. 
+    \end{itemize}
+    \item 
+    \begin{verbatim}
+        \operatorname{My Operator}
+    \end{verbatim}
+    \begin{itemize}
+        \item The \verb|\operatorname| command allows for mathematical operators not within the package to be displayed correctly.
+    \end{itemize}
+\end{itemize}
+
+It can also be used to align a sequence of equations at the equals sign:
+
+\begin{figure}[H]
+\centering
+\begin{BVerbatim}
+    \begin{align*}
+        (x + 1)^3 &= (x + 1)(x + 1)(x + 1) \\
+                  &= (x + 1)(x^2 + 2x + 1) \\
+                  &= x^3 + 3x^2 + 3x + 1
+    \end{align*}
+\end{BVerbatim}
+\end{figure}
+
+\begin{align*}
+    (x + 1)^3 &= (x + 1)(x + 1)(x + 1) \\
+                &= (x + 1)(x^2 + 2x + 1) \\
+                &= x^3 + 3x^2 + 3x + 1
+\end{align*}
+
+The ampersand (\&) separates the left column (before the $=$) and the right column (after the $=$).\\
+The double backslash ($\backslash \backslash$) starts a new line.
+
+\textbf{EX 4 here?}
+% EX 4: A more complicated exercise with multi-line aligned proofs etc? 
+\end{document}
