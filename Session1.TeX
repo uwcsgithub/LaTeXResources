@@ -18,14 +18,13 @@
 \clearpage
 
 \section*{Why LaTeX?}
-LaTeX makes beautiful documents, especially for mathematics. It is far more
-powerful than your standard text editor, and can be extended even further with
-packages for everything you can think of. 
+LaTeX makes beautiful documents, especially for mathematics. It is far more powerful than your standard text editor, and can be extended even further with packages for everything you can think of.
 
-But how does it work? \\
-You write your document in \texttt{plain text} with commands that describe its
-strucutre and meaning. Th \LaTeX proogram then processes your text and commands
-to produce a formatted document... a lot like HTML and CSS! 
+But how does it work?
+
+You write your document in \texttt{plain text} with commands that describe its structure and meaning. Th \LaTeX program then processes your text and commands to produce a formatted document... a lot like HTML and CSS!
+
+The point of such a markup language is to separate content from visual design. If you work in a WYSIWYG editor like MS Word, you may be tempted to waste time fiddling about with making everything look good; \LaTeX gives you the opportunity to write all your content undistracted.
 
 \section*{Getting Started}
 A minimal \LaTeX document requires a document class, as well as begginning and
@@ -39,15 +38,10 @@ end tags (delimiters?)
     \end{document}
 \end{verbatim}
 
-All commands start with a backslash ($\backslash$). \\
-Every document starts with a \verb+\documentclass+ command. \\
-The argument in curly braces (\{ \}) tells \LaTeX what kind of document we are
-creating. In this case, it is an \texttt{article}.\\
-A percent sign (\%) starts a \textit{comment} - \LaTeX ignores all characters
-after a \% on a given line. 
+All commands start with a backslash ($\backslash$). Every document starts with a \verb|\documentclass| command. The argument in curly braces (\{ \}) tells \LaTeX what kind of document we are creating. In this case, it is an \texttt{article}. A percent sign (\%) starts a \textit{comment} - \LaTeX ignores all characters after a \% on a given line.
 
 \subsection*{Getting Started with Overleaf}
-Overleaf is a website for creating \LaTeX documents. It will "compile" your
+Overleaf is a website for creating \LaTeX documents. It will ``compile'' your
 \LaTeX and automatically show you the results. 
 
 % TO DO: CREATE EXAMPLE DOC
@@ -62,55 +56,46 @@ Click \href{google.com}{here} to open the example document in Overleaf.
 % that we can guarantee all the necessary things are covered? 
 
 \subsection*{Handling Errors}
-\LaTeX can run into issues when compiling your document, just like any
-programming language. When this happens, it stops and throws an error, and will
-not produce any output until this error is fixed. \\
-For example, if you misspell a command, say \verb+\textbf+ as \verb+\txetbf+,
-\LaTeX will stop with an ``Undefined control sequence'' error, as ``txetbf'' is
-not a command it knows.
+\LaTeX can run into issues when compiling your document, just like any programming language. When this happens, it stops and throws an error, and will not produce any output until this error is fixed. \\ For example, if you misspell a command, say \verb|\textbf| as \verb|\txetbf| \LaTeX will stop with an ``Undefined control sequence'' error, as ``txetbf'' is not a command it knows.
 
-In Overleaf, the errors panel is accessed by clicking the page button next to
-``Recompile''. If you have errors, there will be a red icon on this button, and
-the errors will be listed. 
+In Overleaf, the errors panel is accessed by clicking the page button next to ``Recompile''. If you have errors, there will be a red icon on this button, and the errors will be listed. 
 
-If you encounter an error, don't panic! Look at the \LaTeX you have written and
-try to figure out where it went wrong. If you have multiple errors, start with
-the first one - it's possible this is leading to all of the others. 
+If you encounter an error, don't panic! Look at the \LaTeX you have written and try to figure out where it went wrong. If you have multiple errors, start with the first one - it's possible this is leading to all of the others. 
 
 \subsection*{Typesetting Maths}
-As you saw earlier, dollar signs are special characters in \LaTeX. This is
-because they're used to mark mathematics in text (inline notation).
+As you saw earlier, dollar signs are special characters in \LaTeX. This is because they're used to mark mathematics in text (inline notation).
 
-For example, ``Let $a$ and $b$ be distinct positive integers, and let $c = a - b
-+ 1$'' can be written as ``\texttt{Let \$a\$ and \$b\$ be distinct positive
-intergers, and let \$c = a - b + 1\$}'' Dollar signs are always used in pairs -
-once to begin and once to end the inline equation. Spacing is also automatically
-handled; any spaces you use will be ignored. 
+For example, ``Let $a$ and $b$ be distinct positive integers, and let $c = a - b + 1$'' can be written as ``\texttt{Let \$a\$ and \$b\$ be distinct positive intergers, and let \$c = a - b + 1\$}'' Dollar signs are always used in pairs - once to begin and once to end the inline equation. Spacing is also automatically handled in maths environments; any spaces you use will be ignored.
 
 \textbf{Here's some of the basic notation in maths:}
 \begin{itemize}
-    \item Use a caret (\verb+^+) for superscripts and an underscore (\verb+_+)
-    for subscripts
+    \item Use a caret (\verb|^|) for superscripts and an underscore (\verb|_|)
+    for subscripts:
     \begin{itemize}
-        \item \verb|$y = c _ 2 x^2 + c_1 x + c_0$|
-        \item Which compiles to $y = c _ 2 x^2 + c_1 x + c_0$
+        \item \verb|$y = c_2 x^2 + c_1 x + c_0$|
+        \item compiles to $y = c _ 2 x^2 + c_1 x + c_0$
     \end{itemize}
-    \item Use curly braces (\{ \}) to group superscripts and subscripts. 
+    \item These characters only consume one token by default.
+    \begin{itemize}
+        \item \verb|$x^123$|
+        \item compiles to $x^123$
+    \end{itemize} 
+    You can use curly braces (\{ \}) to group superscripts and subscripts into single tokens:
     \begin{itemize}
         \item \verb|$F_n = F_{n - 1} + F_{n - 2}$|
-        \item Which compiles to $F_n = F_{n - 1} + F_{n - 2}$
+        \item compiles to $F_n = F_{n - 1} + F_{n - 2}$
     \end{itemize}
     \item There are commands for Greek letters, beginning with a backslash
-    followed by the name of the character
+    followed by the name of the character:
     \begin{itemize}
         \item \verb|$\Omega = \sum_{k = 1}^{n} \omega_k$|
-        \item Which compiles to $\Omega = \sum_{k = 1}^{n} \omega_k$
+        \item compiles to $\Omega = \sum_{k = 1}^{n} \omega_k$
     \end{itemize}
 \end{itemize}
 
 For larger, more complicated equations, we can display these on their own line
-with \textit{display} delimiters. For these, you can use either
-\texttt{$\backslash$[ ... $\backslash$]}  or \verb+\begin{equation} ...\end{equation}+
+with \textit{displaystyle} delimiters. For these, you can use either
+\texttt{$\backslash$[ ... $\backslash$]}  or \verb|\begin{equation} ...\end{equation}|.
 
 For example,
 \begin{figure}[H]
@@ -120,8 +105,6 @@ For example,
     \end{BVerbatim}
 \end{figure}
 
-
-
 Will display as
 \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \] 
 
@@ -129,73 +112,108 @@ Will display as
 % EX 3: maybe some maths problems/simple proofs to typeset their answers to. 
 
 \subsection*{Environments}
-\texttt{equation} is an environment - it gives a command context for the output it should be producing. 
-Inline equations can be denoted by \verb+\begin{math} ...\end{math}+, and display differently to \verb+\begin{equation} ...\end{equation}+. For example, the summarion sign $\sum$ will be larger in a display equation than an inline one.
-The \verb+\begin+ and \verb+\end+ commands are used to create many different environments. For example, the \texttt{itemize} and \texttt{enumerate} environments create bulleted and numbered lists respectively. 
+\texttt{equation} is an environment -- it gives a command context for the output it should be producing.
+
+Inline equations can be denoted by \verb|\begin{math}...\end{math}| (aliased with \$ as seen earlier), and display differently to \verb|\begin{equation}...\end{equation}|. For example, the summation sign $\sum_{n=1}^{\infty}$ will be smaller in an inline equation than a displaystyle one, and limits will be displayed on the right to fit in prose. Compare with:
+
+\begin{equation*}
+    \sum_{n=1}^{\infty}
+\end{equation*}
+
+The \verb|\begin| and \verb|\end| commands are used to create many different environments. For example, the \texttt{itemize} and \texttt{enumerate} environments create bulleted and numbered lists respectively. 
 
 \begin{figure}[H]
     \centering
     \begin{BVerbatim}
         \begin{itemize}
-            \item Item 1 
-            \item Item 2
+            \item Item 1;
+            \item Item 2.
         \end{itemize}
     \end{BVerbatim}
 \end{figure}
 
 \begin{itemize}
-    \item Item 1 
-    \item Item 2
+    \item Item 1;
+    \item Item 2.
 \end{itemize}
 
+\subsection*{Spacing}
+
+Note that in \LaTeX, spacing has
+
 \subsection*{Packages}
-So far, everything we have used has been built into \LaTeX. However, \LaTeX has libraries, called \textit{packages}, of extra commands and environments.\\
+So far, everything we have used has been built into \LaTeX. However, \LaTeX has libraries, called \textit{packages}, of extra commands and environments.
+
 We have to load each of the packages we want to use with a \verb|\usepackage| command in the preamble (before the \verb|begin{document}| command). 
 
 \subsubsection*{amsmath}
-The American Mathematical Society has a package called \texttt{amsmath}, imported with \verb|\usepackage{amsmath}| command in the preamble. This package provides many useful features, and the documentation for it is \href{https://www.ams.org/arc/tex/amsmath/amsldoc.pdf}{here}. 
-Some examples of uses of \texttt{amsmath} are below: 
+The American Mathematical Society has a package called \texttt{amsmath}, imported with \verb|\usepackage{amsmath}| command in the preamble. This package provides many useful features, and the documentation for it is \href{https://www.ams.org/arc/tex/amsmath/amsldoc.pdf}{here}. Some examples of \texttt{amsmath} environmenst are given below.
 
-\begin{itemize}
-    \item 
+Compare
+\begin{verbatim}
+    \begin{equation}
+        \Omega = \sum_{k - 1}^{n} \omega_k
+    \end{equation}
+\end{verbatim}
+produces
+\begin{equation}
+    \Omega = \sum_{k - 1}^{n} \omega_k
+\end{equation}
+with:
+
+\begin{center}
     \begin{verbatim}
+        \begin{align*}
+            0 &\leq(x-y)^2 \\
+              &= x^2 - 2xy - y^2 \\
+              &= (x+y)^2 - 4xy
+        \end{align*}
+    \end{verbatim}
+\end{center}
+\begin{align*}
+    0 &\leq(x-y)^2 \\
+      &= x^2 - 2xy - y^2 \\
+      &= (x+y)^2 - 4xy
+\end{align*}
+The \texttt{align} environment aligns each line at the \& symbol, with linebreaks marked by double backslashes ($\backslash \backslash$).
+
+Note that the \& symbol must be placed to the \textbf{left} of any relation/operator symbols for correct spacing and alignment.
+
+Also note that the final line is \textbf{not} marked with a double backslash. Doing so will add an extra linebreak and cause issues with spacing since the environment already adds spacing to the final line. Also to \textbf{not} use a double backslash for a linebreak in text mode prose, and just leave a blank line instead.
+
+\begin{center}
+    \begin{verbatim}
+        \begin{gather}
+            \nabla\cdot\vec{u}=0\\
+            \rho\frac{d\vec{u}}{dt}=-\nabla p-\mu\nabla^2\vec{u}+\mathbf{F}
+        \end{gather}
+    \end{verbatim}
+\end{center}
+\begin{gather}
+    \nabla\cdot\vec{u}=0 \\
+    \rho\frac{d\vec{u}}{dt}=-\nabla p-\mu\nabla^2\vec{u}+\mathbf{F}
+\end{gather}
+The \texttt{gather} environment centres several separate lines. This should be used for collecting together several related equations.
+
+There are also ``starred'' variants of all of these that remove the equation numbering:
+\begin{center}
+    \begin{verbatim}
+        \begin{equation}
+            a = b + c
+        \end{equation}
         \begin{equation*}
-            \Omega = \sum_{k - 1}^{n} \omega_k
+            a = b + c
         \end{equation*}
     \end{verbatim}
-    \begin{itemize}
-        \item Using \texttt{equation*} will produce unnumbered equations. 
-    \end{itemize}
-    \item 
-    \begin{verbatim}
-        \operatorname{My Operator}
-    \end{verbatim}
-    \begin{itemize}
-        \item The \verb|\operatorname| command allows for mathematical operators not within the package to be displayed correctly.
-    \end{itemize}
-\end{itemize}
+\end{center}
+\begin{equation}
+    a = b + c
+\end{equation}
+\begin{equation*}
+    a = b + c
+\end{equation*}
 
-It can also be used to align a sequence of equations at the equals sign:
 
-\begin{figure}[H]
-\centering
-\begin{BVerbatim}
-    \begin{align*}
-        (x + 1)^3 &= (x + 1)(x + 1)(x + 1) \\
-                  &= (x + 1)(x^2 + 2x + 1) \\
-                  &= x^3 + 3x^2 + 3x + 1
-    \end{align*}
-\end{BVerbatim}
-\end{figure}
-
-\begin{align*}
-    (x + 1)^3 &= (x + 1)(x + 1)(x + 1) \\
-                &= (x + 1)(x^2 + 2x + 1) \\
-                &= x^3 + 3x^2 + 3x + 1
-\end{align*}
-
-The ampersand (\&) separates the left column (before the $=$) and the right column (after the $=$).\\
-The double backslash ($\backslash \backslash$) starts a new line.
 
 \textbf{EX 4 here?}
 % EX 4: A more complicated exercise with multi-line aligned proofs etc? 
