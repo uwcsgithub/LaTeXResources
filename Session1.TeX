@@ -7,6 +7,8 @@
 
 \usepackage[margin = 0.7in]{geometry}
 \hyphenpenalty = 10000
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
 
 
 \title{Beginner's Guide to LaTeX}
@@ -22,12 +24,12 @@ LaTeX makes beautiful documents, especially for mathematics. It is far more powe
 
 But how does it work?
 
-You write your document in \texttt{plain text} with commands that describe its structure and meaning. Th \LaTeX program then processes your text and commands to produce a formatted document... a lot like HTML and CSS!
+You write your document in \texttt{plain text} with commands that describe its structure and meaning. The \LaTeX{} program then processes your text and commands to produce a formatted document... a lot like HTML and CSS!
 
-The point of such a markup language is to separate content from visual design. If you work in a WYSIWYG editor like MS Word, you may be tempted to waste time fiddling about with making everything look good; \LaTeX gives you the opportunity to write all your content undistracted.
+The point of such a markup language is to separate content from visual design. If you work in a WYSIWYG editor like MS Word, you may be tempted to waste time fiddling about with making everything look good; \LaTeX{}{} gives you the opportunity to write all your content undistracted.
 
 \section*{Getting Started}
-A minimal \LaTeX document requires a document class, as well as beginning and
+A minimal \LaTeX{} document requires a document class, as well as beginning and
 end tags.
 
 \begin{verbatim}
@@ -38,34 +40,33 @@ end tags.
     \end{document}
 \end{verbatim}
 
-All commands start with a backslash ($\backslash$). Every document starts with a \verb|\documentclass| command. The argument in curly braces (\{ \}) tells \LaTeX what kind of document we are creating. In this case, it is an \texttt{article}. A percent sign (\%) starts a \textit{comment} - \LaTeX ignores all characters after a \% on a given line.
+All commands start with a backslash ($\backslash$). Every document starts with a \verb|\documentclass| command. The argument in curly braces (\{ \}) tells \LaTeX{} what kind of document we are creating. In this case, it is an \texttt{article}. A percent sign (\%) starts a \textit{comment} - \LaTeX{}{} ignores all characters after a \% on a given line.
 
 \subsection*{Getting Started with Overleaf}
-Overleaf is a website for creating \LaTeX documents. It will ``compile'' your
-\LaTeX and automatically show you the results. 
+Overleaf is a website for creating \LaTeX{} documents. It will ``compile'' your
+\LaTeX{} and automatically show you the results. 
 
 % TO DO: CREATE EXAMPLE DOC
-Click \href{google.com}{here} to open the example document in Overleaf.
+Click \href{https://www.overleaf.com/read/hyvdckspdxcg#f21381}{here} to open the worksheet in Overleaf and complete exercises 1 and 2. 
 
-\textbf{EX 1 and EX2 here? See source file for details}
 % EX 1: Add plain, unstyled text between \begin{document} and \end{document} and
 % compile. Maybe play with whitespace and see how it's trimmed? 
 
-% EX 2: Special characters in text, escape character, quatation marks (`' and ``
+% EX 2: Special characters in text, escape character, quotation marks (`' and ``
 % ''), etc. We could possibly provide a block of text here and a solution so
 % that we can guarantee all the necessary things are covered? 
 
 \subsection*{Handling Errors}
-\LaTeX can run into issues when compiling your document, just like any programming language. When this happens, it stops and throws an error, and will not produce any output until this error is fixed.
+\LaTeX{} can run into issues when compiling your document, just like any programming language. When this happens, it stops and throws an error, and will not produce any output until this error is fixed.
 
-For example, if you misspell a command, say \verb|\textbf| as \verb|\txetbf| \LaTeX will stop with an ``Undefined control sequence'' error, as ``txetbf'' is not a command it knows.
+For example, if you misspell a command, say \verb|\textbf| as \verb|\txetbf| \LaTeX{} will stop with an ``Undefined control sequence'' error, as ``txetbf'' is not a command it knows.
 
 In Overleaf, the errors panel is accessed by clicking the page button next to ``Recompile''. If you have errors, there will be a red icon on this button, and the errors will be listed. 
 
-If you encounter an error, don't panic! Look at the \LaTeX you have written and try to figure out where it went wrong. If you have multiple errors, start with the first one - it's possible this is leading to all of the others. 
+If you encounter an error, don't panic! Look at the \LaTeX{} you have written and try to figure out where it went wrong. If you have multiple errors, start with the first one - it's possible this is leading to all of the others. 
 
 \subsection*{Typesetting Maths}
-As you saw earlier, dollar signs are special characters in \LaTeX. This is because they're used to mark mathematics in text (inline notation). Special characters can be escaped with a backslash; so, to insert a dollar sign, you can write \verb|\$|.
+As you saw earlier, dollar signs are special characters in \LaTeX{}. This is because they're used to mark mathematics in text (inline notation). Special characters can be escaped with a backslash; so, to insert a dollar sign, you can write \verb|\$|.
 
 For example, ``Let $a$ and $b$ be distinct positive integers, and let $c = a - b + 1$'' can be written as ``\texttt{Let \$a\$ and \$b\$ be distinct positive intergers, and let \$c = a - b + 1\$}'' Dollar signs are always used in pairs - once to begin and once to end the inline equation. Spacing is also automatically handled in maths environments; any spaces you use will be ignored.
 
@@ -122,8 +123,22 @@ For example,
 Will display as
 \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \] 
 
-\textbf{EX 3 here?}
-% EX 3: maybe some maths problems/simple proofs to typeset their answers to. 
+\textbf{Exercise 3:}
+
+Typeset the following expressions on the worksheet: 
+
+\begin{equation*}
+    \sum_{p = 1}^{n} (-1)^{p - 1} \frac{n!}{p!}
+\end{equation*}
+
+\begin{equation*}
+    \frac{\Delta f}{\Delta t} = \lim_{h \to 0} \frac{f(t + h) - f(t)}{h}
+\end{equation*}
+
+Extension: 
+\begin{equation*}
+    \frac{\partial^2 \Psi}{\partial x^2} + \frac{8 \pi^2 m}{h^2} (E - V) \Psi = 0 
+\end{equation*}
 
 \subsection*{Environments}
 \texttt{equation} is an environment -- it gives a command context for the output it should be producing.
@@ -151,12 +166,51 @@ The \verb|\begin| and \verb|\end| commands are used to create many different env
     \item Item 2.
 \end{itemize}
 
+\subsection*{Theorem and Proof Environments}
+
+When typesetting maths in \LaTeX{}, you will come across times you need to format a theorem or a proof - thankfully, \LaTeX{} can handle this too. 
+Numbered theorems can be defined by \verb|\newtheorem{theorem}{Theorem}|, which takes 2 arguments:
+\begin{itemize}
+    \item The first argument is the name of the environment used 
+    \item The second argument is the word printed in bold at the beginning of the environment. 
+\end{itemize}
+
+Once this has been defined in the preamble of your \LaTeX{} document (where you import your packages), you can use this with the standard \verb|\begin{}...\end{}| environment syntax.  
+\begin{figure}[H]
+    \centering
+    \begin{BVerbatim}
+        \begin{theorem}
+            \dots
+        \end{theorem}
+    \end{BVerbatim}
+\end{figure}
+
+Similarly, proofs can be displayed nicely. The amsthm package (more information on packages below) provides the functionality for this, with \verb|\begin{proof}...\end{proof}|. 
+
+This will give the italic ``\textit{Proof}'' text at the start of the proof, as well as the end proof symbol at the end. 
+
+For example: 
+
+\begin{theorem}
+    Assume $n$ to be an integer. If $n^2$ is odd, then $n$ is odd.
+\end{theorem}
+
+\begin{proof}
+By contraposition. Suppose $n$ is an integer. If $n$ is even, then $n^2$ is even. 
+Since $n$ is an even number, we can substitute $n = 2k$. 
+Substituting $n$ for $2k$ in $n^2$ gives us $n^2 = (2k)^2 = 4k^2 = 2(2k^2)$ and is therefore even. 
+As $k$ is an integer, as is $2k^2$. 
+Therefore, we have proved the contrapositive to be true, meaning the original statement must also be true, hence if $n^2$ is odd then $n$ must be odd. 
+\end{proof}
+
+
+
 \subsection*{Spacing}
 
-Note that in \LaTeX, spacing has
+Note that in \LaTeX{}, spacing has
 
 \subsection*{Packages}
-So far, everything we have used has been built into \LaTeX. However, \LaTeX has libraries, called \textit{packages}, of extra commands and environments.
+So far, everything we have used has been built into \LaTeX{}. However, \LaTeX{} has libraries, called \textit{packages}, of extra commands and environments.
 
 We have to load each of the packages we want to use with a \verb|\usepackage| command in the preamble (before the \verb|begin{document}| command). 
 
@@ -227,8 +281,6 @@ There are also ``starred'' variants of all of these that remove the equation num
     a = b + c
 \end{equation*}
 
+\textbf{EX 4:} details are on the worksheet.
 
-
-\textbf{EX 4 here?}
-% EX 4: A more complicated exercise with multi-line aligned proofs etc? 
 \end{document}
